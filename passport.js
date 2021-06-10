@@ -4,10 +4,12 @@ const User = require('./models/user');
 const jwtStrategy = require('passport-jwt').Strategy;
 const config = require("./config");
 
-const cookieExtractor = req => {
+const cookieExtractor = async (req) => {
     let token = null;
+    console.log("we are here");
     if (req && req.cookies) {
-        token = req.cookies["access_token"];
+        token = await req.cookies["access_token"];
+        console.log(token);
     }
     return token;
 }

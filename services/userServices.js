@@ -4,12 +4,12 @@ const passport = require('passport');
 const JWT = require("jsonwebtoken");
 const config = require("../config");
 
-const signToken = userID => {
-    return JWT.sign({
-        iss: "booksouls",
-        sub: userID,
-    }, config.secret, { expiresIn: "1 day" });
-}
+// const signToken = userID => {
+//     return JWT.sign({
+//         iss: "booksouls",
+//         sub: userID,
+//     }, config.secret, { expiresIn: "1 day" });
+// }
 
 const createUser = async (doc) => {
     try {
@@ -43,11 +43,44 @@ const createUser = async (doc) => {
     }
 }
 
+const savetasks = async (userid, tasks) => {
+    try {
+        if (userid && tasks) {
+            let user = await User.findByIdAndUpdate(userid, { todos: tasks },
+                function (err, docs) {
+                    if (err) {
+                        console.log(err)
+                    }
+                    else {
+                        console.log("Updated todos : ", docs);
+                    }
+                });
+            if (user) {
+                return { success: true }
+            } else {
+                return { success: false }
+            }
+        } else {
+
+            return { message: "Missing required info" }
+        }
+    } catch (ex) {
+        console.log(ex);
+        throw ex;
+    }
+}
 const login = async (user) => {
 
     const { _id } = user;
-    const token = signToken(_id);
-    return token;
+    const token = JWT.sign(
+        {
+            username: user.username,
+            firstName: user.firstName,
+            lastName: user.lastName,
+        },
+        config.secret
+    );
+    return token
     // res.cookie('access_token', token, { httpOnly: true, sameSite: true });
     // res.status(200).json({ isAuthenticated: true, user: req.user });
 }
@@ -71,5 +104,5 @@ const resetPassword = async (user, password) => {
 
 
 module.exports = {
-    createUser, login, resetPassword
+    createUser, login, resetPassword, savetasks
 }

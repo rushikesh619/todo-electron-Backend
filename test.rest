@@ -36,24 +36,24 @@
 # }
 
 
-# post http://localhost:3002/user/register
-# Content-Type: application/json
-
-# {
-#     "user":{
-#           "username":"shyam",
-#           "firstName":"hardik",
-#           "lastName":"dave",
-#           "password":"1234567"
-#      }   
-# }
-
-post http://localhost:3002/user/login
+post http://localhost:3001/user/register
 Content-Type: application/json
 
 {
     
-          "username":"shyam",
+          "username":"dhara",
+          "firstName":"hardik",
+          "lastName":"dave",
           "password":"1234567"
-      
+       
 }
+
+# post http://localhost:3001/user/login
+# Content-Type: application/json
+
+# {
+    
+#           "username":"shyam",
+#           "password":"1234567"
+      
+# }

@@ -5,7 +5,7 @@ const http = require("http");
 const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
 const morgan = require('morgan');
-const cors = require("cors");
+const cors = require('cors');
 const path = require("path");
 require('dotenv').config();
 const {
@@ -33,11 +33,10 @@ app.get("/", (req, res) => {
     res.send("listening");
 })
 
-app.use(cors())
 app.use(cookieParser());
 app.use(express.json());
 
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3001;
 const server = http.createServer(apis);
 
 server.listen(port, () => console.log(`listening on port ${port}`));

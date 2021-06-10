@@ -1,0 +1,59 @@
+# post http://localhost:3000/book/saveBook
+# Content-Type: application/json
+
+# {
+#     "user":{
+#         "_id":"608ab432f8f29d1740fc9b4f"
+#     },
+#     "book":{
+        
+#         "_id":"60897c039780ab03fce0c429"
+   
+#     }
+# }
+
+# get http://localhost:3000/book/getSavedBooks/608ab432f8f29d1740fc9b4f
+
+
+# get http://localhost:3000/book/curatedForYou/608ab432f8f29d1740fc9b4f
+
+# post http://localhost:3009/user/getSavedBooks
+# Content-Type: application/json
+
+# {
+#      "user":{
+#          "username":"dave"
+#      }
+# }
+
+# get http://localhost:3000/book/
+
+# post http://localhost:3000/book/getByCategory
+# Content-Type: application/json
+
+# {
+#     "category":"Investment"
+# }
+
+
+# post http://localhost:3002/user/register
+# Content-Type: application/json
+
+# {
+#     "user":{
+#           "username":"shyam",
+#           "firstName":"hardik",
+#           "lastName":"dave",
+#           "password":"1234567"
+#      }   
+# }
+
+post http://localhost:3002/user/login
+Content-Type: application/json
+
+{
+    
+          "username":"shyam",
+          "password":"1234567"
+      
+}

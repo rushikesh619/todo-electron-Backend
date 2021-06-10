@@ -33,6 +33,7 @@ app.get("/", (req, res) => {
     res.send("listening");
 })
 
+app.use(cors())
 app.use(cookieParser());
 app.use(express.json());
 

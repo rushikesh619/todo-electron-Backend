@@ -17,6 +17,12 @@ app.use(bodyParser.json({
 //     res.status(200).json({ message: 'it works' });
 // })
 
-app.use('/user', user);
+app.use('/api/user', user);
+
+app.get('*.*', express.static(__dirname + '/public', { maxAge: '1y' }));
+// serve frontend paths
+app.all('*', function (req, res) {
+    res.status(200).sendFile(`/`, { root: __dirname + '/public' });
+});
 
 module.exports = app;
